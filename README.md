@@ -25,4 +25,6 @@
 
 Имена методов ОБЯЗАНЫ быть объявлены в ```php $camelCase; ```. 
 
-```php <?php here_pagecontent(); ?> ```
+```php
+<?php here_pagecontent(); ?>
+```
