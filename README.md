@@ -25,21 +25,6 @@ PHP код ОБЯЗАН использовать длинные теги ` <?php
 PHP код ОБЯЗАН использовать только UTF-8 без [BOM](https://ru.wikipedia.org/wiki/Маркер_последовательности_байтов).
 
 #### 2.3. Побочные эффекты
-A file SHOULD declare new symbols (classes, functions, constants,
-etc.) and cause no other side effects, or it SHOULD execute logic with side
-effects, but SHOULD NOT do both.
-
-The phrase “side effects” means execution of logic not directly related to
-declaring classes, functions, constants, etc., merely from including the
-file.
-
-“Side effects” include but are not limited to: generating output, explicit
-use of require or include, connecting to external services, modifying ini
-settings, emitting errors or exceptions, modifying global or static variables,
-reading from or writing to a file, and so on.
-
-The following is an example of a file with both declarations and side effects;
-i.e, an example of what to avoid:
 
 Файл ДОЛЖЕН объявлять новые символы (классы, функции, константы,
 и т.д.) без вызова никаких других побочных эффектов, или ДОЛЖЕН выполнять логику со сторонними эффектами, но ДОЛЖЕН НЕ делать и то и другое.
