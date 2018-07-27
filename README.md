@@ -17,5 +17,52 @@
 * Имена методов ОБЯЗАНЫ быть объявлены в ` camelCase `.  
 
 ### 2. Файлы
+
 #### 2.1. PHP теги
-PHP код ОБЯЗАН использовать длинные теги ` <?php ?>` или короткие теги вывода ` <?= ?> `; Файлы ОБЯЗАНЫ НЕ использовать другие варианты тегов.
+PHP код ОБЯЗАН использовать длинные теги ` <?php ?> ` или короткие теги вывода ` <?= ?> `; Файлы ОБЯЗАНЫ НЕ использовать другие варианты тегов.
+
+#### 2.2. Кодировка символов
+PHP код ОБЯЗАН использовать только UTF-8 без [BOM](https://ru.wikipedia.org/wiki/Маркер_последовательности_байтов).
+
+#### 2.3. Побочные эффекты
+A file SHOULD declare new symbols (classes, functions, constants,
+etc.) and cause no other side effects, or it SHOULD execute logic with side
+effects, but SHOULD NOT do both.
+
+The phrase “side effects” means execution of logic not directly related to
+declaring classes, functions, constants, etc., merely from including the
+file.
+
+“Side effects” include but are not limited to: generating output, explicit
+use of require or include, connecting to external services, modifying ini
+settings, emitting errors or exceptions, modifying global or static variables,
+reading from or writing to a file, and so on.
+
+The following is an example of a file with both declarations and side effects;
+i.e, an example of what to avoid:
+
+Файл ДОЛЖЕН объявлять новые символы (классы, функции, константы,
+и т.д.) без вызова никаких других побочных эффектов, или ДОЛЖЕН выполнять логику со сторонними эффектами, но ДОЛЖЕН НЕ делать и то и другое.
+
+Фраза «побочные эффекты» означает выполнение логики, не связанной непосредственно с объявлением классов, функций, констант и т.д., только из включаемого файла.
+
+«Побочные эффекты» включают, но не ограничиваются: генерирование вывода, явное использование ` require ` или ` include `, подключение к внешним службам, изменение настроек ini, генерирование ошибок или исключений, изменение глобальных или статических переменных, чтение или запись в файл и т.д.
+
+Ниже приведен пример файла с объявлением и побочными эффектами; то есть пример того, чего следует избегать:
+```php
+<?php
+// побочный эффект: изменение настроек ini
+ini_set('error_reporting', E_ALL);
+
+// побочный эффект: загрузка файла
+include "file.php";
+
+// побочный эффект: генерирование вывода
+echo "<html>\n";
+
+// объявление
+function foo()
+{
+    // тело функции
+}
+```
